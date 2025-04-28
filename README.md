@@ -1,40 +1,35 @@
-# Sam Liao 個人網站
+👋 Hi, I’m Sam Liao — an AI Engineer passionate about building impactful AI systems and intelligent solutions.
 
-這是Sam Liao的個人作品集網站，展示了個人專業背景、專案和技能。
+💡 What I Do
+- Develop Large Language Model (LLM) applications with a focus on Retrieval-Augmented Generation (RAG), Fine-Tuning, and Agent Systems.
+- Design AI-driven tools that extract insights from unstructured data and solve complex real-world business problems.
+- Build scalable microservice architectures and optimize data pipelines for robust, efficient deployments on cloud platforms like GCP.
 
-## 功能特色
+🛠 My Core Skills
+- LLM Development: RAG, Graph RAG, Vector Databases (ChromaDB), Fine-Tuning (UnSloth, Hugging Face Transformers), Agent Frameworks (SMOLAgents, LangGraph, Agno)
+- Software Engineering: Python, FastAPI, Domain-Driven Design (DDD), Kubernetes, Docker, CI/CD
+- Cloud Engineering: GCP (GKE, Cloud Run, Vertex AI, Pub/Sub, Cloud Storage)
 
-- 響應式設計
-- 動態滾動動畫
-- 項目卡片互動效果
-- 打字機效果標題
-- 聯絡方式整合
+📚 About This Website
+This personal portfolio site showcases my key projects, professional background, and technical expertise.  
+Built with:
+- HTML5, CSS3, Vanilla JavaScript
+- Deployed via GitHub Pages
+- All dynamic content managed through a centralized `config.js` file for easy updates and scalability.
 
-## 技術堆疊
+🚀 Projects Highlighted
+- **LLM-Driven Court Case Risk Analysis System**: Built a self-hosted LLaMA 3 system to extract actionable insights from legal texts, increasing risk identification rates by 30%.
+- **Risk Detection System**: Developed a modular AI pipeline using Gemini and LangChain to extract and validate financial risk signals.
+- **Sales Training LLM Chatbot**: Created a GPT4o-based chatbot for sales onboarding, achieving 95% user satisfaction.
 
-- HTML5
-- CSS3
-- JavaScript (vanilla)
-- 字體圖標 (Font Awesome)
-- Google Fonts
+🎯 What Drives Me
+I believe in using AI not just as a tool, but as a way to enhance understanding, decision-making, and discovery.  
+Curiosity, craftsmanship, and real-world impact are the pillars that guide my work.
 
-## 部署於Zeabur
+🤝 Let’s Connect!
+If you're interested in AI engineering, LLM applications, or scaling data solutions — feel free to reach out!
 
-本網站已部署於Zeabur平台，可直接訪問：
-[https://sam-liao.zeabur.app](https://sam-liao.zeabur.app)
-
-## 本地運行
-
-1. 克隆此儲存庫
-2. 使用任意HTTP伺服器啟動網站，例如：
-   ```
-   python3 -m http.server 8000
-   ```
-3. 瀏覽器訪問 http://localhost:8000
-
-## 聯繫方式
-
-- Email: sam.liao.dev@gmail.com
-- LinkedIn: linkedin.com/in/samliaotw
-- GitHub: github.com/SamLiaoP
-- Medium: medium.com/@sam.liao.dev 
+- 📧 Email: [sam.liao.dev@gmail.com](mailto:sam.liao.dev@gmail.com)
+- 🔗 LinkedIn: [linkedin.com/in/samliaotw](https://linkedin.com/in/samliaotw)
+- 💻 GitHub: [github.com/SamLiaoP](https://github.com/SamLiaoP)
+- ✍️ Medium: [medium.com/@sam.liao.dev](https://medium.com/@sam.liao.dev)
