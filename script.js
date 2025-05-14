@@ -766,7 +766,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 更新聯繫信息
     const contactInfo = document.getElementById('contact-info');
     contactInfo.innerHTML = `
-        <span data-href="mailto:${config.personalInfo.email}" class="contact-item">
+        <a href="mailto:${config.personalInfo.email}" class="contact-item">
             <div class="contact-icon">
                 <i class="fas fa-envelope"></i>
             </div>
@@ -774,8 +774,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>Email</h3>
                 <p>${config.personalInfo.email}</p>
             </div>
-        </span>
-        <span data-href="https://${config.personalInfo.linkedin}" target="_blank" class="contact-item">
+        </a>
+        <a href="https://${config.personalInfo.linkedin}" target="_blank" class="contact-item">
             <div class="contact-icon">
                 <i class="fab fa-linkedin-in"></i>
             </div>
@@ -783,8 +783,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>LinkedIn</h3>
                 <p>${config.personalInfo.linkedin}</p>
             </div>
-        </span>
-        <span data-href="https://${config.personalInfo.github}" target="_blank" class="contact-item">
+        </a>
+        <a href="https://${config.personalInfo.github}" target="_blank" class="contact-item">
             <div class="contact-icon">
                 <i class="fab fa-github"></i>
             </div>
@@ -792,8 +792,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>GitHub</h3>
                 <p>${config.personalInfo.github}</p>
             </div>
-        </span>
-        <span data-href="https://${config.personalInfo.medium}" target="_blank" class="contact-item">
+        </a>
+        <a href="https://${config.personalInfo.medium}" target="_blank" class="contact-item">
             <div class="contact-icon">
                 <i class="fab fa-medium-m"></i>
             </div>
@@ -801,8 +801,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>Medium</h3>
                 <p>${config.personalInfo.medium}</p>
             </div>
-        </span>
-        <span data-href="tel:${config.personalInfo.phone}" class="contact-item">
+        </a>
+        <a href="tel:${config.personalInfo.phone}" class="contact-item">
             <div class="contact-icon">
                 <i class="fas fa-phone-alt"></i>
             </div>
@@ -810,6 +810,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>Phone</h3>
                 <p>${config.personalInfo.phone}</p>
             </div>
-        </span>
+        </a>
     `;
 }); 
