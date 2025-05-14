@@ -4,7 +4,7 @@ if (typeof config === 'undefined') {
 }
 
 // 平滑滾動效果
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('span[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         
@@ -232,34 +232,31 @@ function setStaggeredAnimations() {
 // 設置動畫延遲
 setStaggeredAnimations();
 
-// 為導航添加活動菜單項高亮效果
-const navLinks = document.querySelectorAll('nav a');
-const sections = document.querySelectorAll('section[id]');
-
+// 根據滾動位置更新活動導航連結
 function updateActiveLink() {
-    let current = '';
+    const navLinks = document.querySelectorAll('nav a, nav span[href], nav span[data-href]');
+    const sections = document.querySelectorAll('section[id]');
+    
+    let currentSection = '';
     
     sections.forEach(section => {
         const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-            current = '#' + section.getAttribute('id');
+        const sectionHeight = section.offsetHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSection = '#' + section.getAttribute('id');
         }
     });
     
     navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === current) {
-            link.classList.add('active');
-        }
+        const href = link.getAttribute('href') || link.getAttribute('data-href');
+        link.classList.toggle('active', href === currentSection);
     });
 }
 
-// 初始檢查
+// 初始化活動連結
 updateActiveLink();
 
-// 滾動時檢查
+// 滾動時更新活動連結
 window.addEventListener('scroll', updateActiveLink);
 
 // 添加鼠標懸停效果
@@ -527,6 +524,7 @@ if (statValues.length > 0) {
 // 移動裝置導航菜單
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileNav = document.querySelector('nav ul');
+const navLinks = document.querySelectorAll('nav a, nav span[href], nav span[data-href]');
 
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
@@ -666,7 +664,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('hero-subtitle').textContent = config.personalInfo.subtitle;
     document.getElementById('hero-title').innerHTML = `AI Engineer specialized in <span class="highlight">LLM development</span>`;
     document.getElementById('hero-description').textContent = config.personalInfo.description;
-    document.getElementById('linkedin-link').href = `https://${config.personalInfo.linkedin}`;
+    document.getElementById('linkedin-link').setAttribute('data-href', `https://${config.personalInfo.linkedin}`);
     document.getElementById('footer-name').textContent = config.personalInfo.name;
 
     // 更新關於我部分
@@ -693,7 +691,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const projectsGrid = document.getElementById('projects-grid');
     projectsGrid.innerHTML = config.projects.map(project => `
         <div class="project-card">
-            <a href="${project.url}" target="_blank"></a>
+            <span data-href="${project.url}" target="_blank"></span>
             <div class="project-header">
                 <span class="project-company">${project.company}</span>
                 <span class="project-year">${project.year}</span>
@@ -722,7 +720,7 @@ document.addEventListener('DOMContentLoaded', function() {
     awardsGrid.innerHTML = [
         ...config.awards.map(award => `
             <div class="award-card">
-                <a href="${award.url}" target="_blank"></a>
+                <span data-href="${award.url}" target="_blank"></span>
                 <div class="award-badge">${award.badge}</div>
                 <h3>${award.title}</h3>
                 <p>${award.description}</p>
@@ -733,7 +731,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `),
         ...config.certifications.map(cert => `
             <div class="award-card cert">
-                <a href="${cert.url}" target="_blank"></a>
+                <span data-href="${cert.url}" target="_blank"></span>
                 <div class="cert-icon">${cert.icon}</div>
                 <h3>${cert.title}</h3>
                 <p>${cert.description}</p>
@@ -768,7 +766,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 更新聯繫信息
     const contactInfo = document.getElementById('contact-info');
     contactInfo.innerHTML = `
-        <a href="mailto:${config.personalInfo.email}" class="contact-item">
+        <span data-href="mailto:${config.personalInfo.email}" class="contact-item">
             <div class="contact-icon">
                 <i class="fas fa-envelope"></i>
             </div>
@@ -776,8 +774,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>Email</h3>
                 <p>${config.personalInfo.email}</p>
             </div>
-        </a>
-        <a href="https://${config.personalInfo.linkedin}" target="_blank" class="contact-item">
+        </span>
+        <span data-href="https://${config.personalInfo.linkedin}" target="_blank" class="contact-item">
             <div class="contact-icon">
                 <i class="fab fa-linkedin-in"></i>
             </div>
@@ -785,8 +783,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>LinkedIn</h3>
                 <p>${config.personalInfo.linkedin}</p>
             </div>
-        </a>
-        <a href="https://${config.personalInfo.github}" target="_blank" class="contact-item">
+        </span>
+        <span data-href="https://${config.personalInfo.github}" target="_blank" class="contact-item">
             <div class="contact-icon">
                 <i class="fab fa-github"></i>
             </div>
@@ -794,8 +792,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>GitHub</h3>
                 <p>${config.personalInfo.github}</p>
             </div>
-        </a>
-        <a href="https://${config.personalInfo.medium}" target="_blank" class="contact-item">
+        </span>
+        <span data-href="https://${config.personalInfo.medium}" target="_blank" class="contact-item">
             <div class="contact-icon">
                 <i class="fab fa-medium-m"></i>
             </div>
@@ -803,8 +801,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>Medium</h3>
                 <p>${config.personalInfo.medium}</p>
             </div>
-        </a>
-        <a href="tel:${config.personalInfo.phone}" class="contact-item">
+        </span>
+        <span data-href="tel:${config.personalInfo.phone}" class="contact-item">
             <div class="contact-icon">
                 <i class="fas fa-phone-alt"></i>
             </div>
@@ -812,6 +810,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>Phone</h3>
                 <p>${config.personalInfo.phone}</p>
             </div>
-        </a>
+        </span>
     `;
 }); 
